@@ -64,3 +64,5 @@ node_modules/
 
 # dotenv environment variables file
 .env
+functions/database/db.js
+functions/database/permissions.json
