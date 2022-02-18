@@ -8,9 +8,6 @@ const app = express();
 // Cors setup:
 app.use(cors({ origin: true }));
 
-// // Directory setup:
-// app.use("/api");
-
 // Routes setup:
 app.use(router);
 

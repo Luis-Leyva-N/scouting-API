@@ -10,7 +10,8 @@ const matchesController = require("../controllers/matchesController");
 const router = express.Router();
 
 // Methods:
-router.get("/api/first", eventController.getAllEvents); // Cambiar
+router.get("/api/matchNumbers", eventController.getMatchNumbers);
+router.post("/api/updateMatches", eventController.postUpdateMatches);
 
 // Export Router:
 module.exports = router;
