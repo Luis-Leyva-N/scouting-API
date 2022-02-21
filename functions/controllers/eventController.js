@@ -31,7 +31,7 @@ class MainController {
                         .collection("Red")
                         .doc(subElement)
                         .set({
-                            completed: false,
+                            team: subElement,
                         });
 
                     const id = db
@@ -55,7 +55,7 @@ class MainController {
                         .collection("Blue")
                         .doc(subElement)
                         .set({
-                            completed: false,
+                            team: subElement,
                         });
 
                     const id = db
