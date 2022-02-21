@@ -12,6 +12,7 @@ const router = express.Router();
 // Methods:
 router.get("/api/matchNumbers", eventController.getMatchNumbers);
 router.post("/api/updateMatches", eventController.postUpdateMatches);
+router.post("/api/updateTeams", eventController.postUpdateTeams);
 
 // Export Router:
 module.exports = router;
