@@ -20,6 +20,35 @@ class MainController {
             res.send(error.message);
         }
     }
+
+    // Get Matches Teams
+    async getMatchesTeams(req, res) {
+        try {
+            let response = [];
+            const redRef = db
+                .collection("Matches")
+                .doc(req.body.match_number)
+                .collection("Red");
+            const blueRef = db
+                .collection("Matches")
+                .doc(req.body.match_number)
+                .collection("Blue");
+            await redRef.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    response.push(doc.data().team);
+                });
+            });
+            await blueRef.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    response.push(doc.data().team);
+                });
+            });
+            res.send(response);
+        } catch {
+            res.status(500);
+            res.send(error.message);
+        }
+    }
 }
 
 const matchesController = new MainController();
