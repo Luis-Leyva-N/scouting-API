@@ -85,14 +85,14 @@ class MainController {
     // Update Teams Count And Information
     async postUpdateTeams(req, res) {
         try {
-            req.body.forEach((element) => {
+            await req.body.forEach((element) => {
                 db.collection("Teams").doc(element.key).set({
                     number: element.team_number,
                     name: element.name,
                 });
             });
-            const docRef = db.collection("Teams").doc("TeamsCounter");
-            await docRef.update({ Count: req.body.length });
+            const docRef = db.collection("Matches").doc("MatchCounter");
+            await docRef.update({ teams: req.body.length });
         } catch (error) {
             res.status(500);
             res.send(error.message);

@@ -17,5 +17,8 @@ router.post("/api/updateTeams", eventController.postUpdateTeams);
 router.get("/api/getMatches", matchesController.getMatches);
 router.post("/api/getMatchesTeams", matchesController.getMatchesTeams);
 
+router.post("/api/updateTeamResults", teamsController.updateTeamResults);
+router.get("/api/getTeams", teamsController.getTeams);
+
 // Export Router:
 module.exports = router;
