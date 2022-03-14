@@ -12,7 +12,7 @@ class MainController {
             const doc = await docRef.get();
             const data = doc.data();
             const matchRef = data.id;
-            await matchRef.set({
+            matchRef.update({
                 empiezaPelota: req.body.empiezaPelota,
                 mueveAutonomo: req.body.mueveAutonomo,
                 disparaAutonomo: req.body.disparaAutonomo,
@@ -26,6 +26,7 @@ class MainController {
                 escala: req.body.escala,
                 nivelAvance: req.body.nivelAvance,
             });
+            res.json({ message: "ok" });
         } catch (error) {
             res.status(500);
             res.send(error.message);
@@ -39,6 +40,31 @@ class MainController {
             const doc = await docRef.get();
             const data = doc.docs.map((doc) => doc.data());
             res.json(data);
+        } catch (error) {
+            res.status(500);
+            res.send(error.message);
+        }
+    }
+
+    // Get team matches
+    async getTeamMatches(req, res) {
+        try {
+            const docRef = db
+                .collection("Teams")
+                .doc(req.body.teamId)
+                .collection("Matches");
+            const doc = await docRef.get();
+            const data = doc.docs.map((doc) => doc.data());
+            const result = [];
+            const matches = data.map((match) =>
+                match.id.get().then((doc) => {
+                    const datas = doc.data();
+                    result.push(datas);
+                })
+            );
+
+            console.log(result);
+            res.json(matches);
         } catch (error) {
             res.status(500);
             res.send(error.message);

@@ -6,7 +6,7 @@ class MainController {
     async getMatches(req, res) {
         try {
             const docRef = db.collection("Matches");
-            let response = [];
+            const response = [];
             await docRef.get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (doc.data().match_number) {
@@ -24,7 +24,7 @@ class MainController {
     // Get Matches Teams
     async getMatchesTeams(req, res) {
         try {
-            let response = [];
+            const response = [];
             const redRef = db
                 .collection("Matches")
                 .doc(req.body.match_number)
@@ -44,7 +44,7 @@ class MainController {
                 });
             });
             res.send(response);
-        } catch {
+        } catch (error) {
             res.status(500);
             res.send(error.message);
         }

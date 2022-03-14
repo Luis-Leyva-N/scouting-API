@@ -76,6 +76,7 @@ class MainController {
 
             const docRef = db.collection("Matches").doc("MatchCounter");
             await docRef.update({ Count: req.body.length });
+            res.json({ message: "Matches Updated" });
         } catch (error) {
             res.status(500);
             res.send(error.message);
@@ -93,6 +94,7 @@ class MainController {
             });
             const docRef = db.collection("Matches").doc("MatchCounter");
             await docRef.update({ teams: req.body.length });
+            res.json({ message: "Teams Updated" });
         } catch (error) {
             res.status(500);
             res.send(error.message);
