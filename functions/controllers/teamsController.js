@@ -25,6 +25,7 @@ class MainController {
                 anotaTeleoperadoAbajo: req.body.anotaTeleoperadoAbajo,
                 escala: req.body.escala,
                 nivelAvance: req.body.nivelAvance,
+                team: req.body.teamId,
             });
             res.json({ message: "ok" });
         } catch (error) {
@@ -54,17 +55,13 @@ class MainController {
                 .doc(req.body.teamId)
                 .collection("Matches");
             const doc = await docRef.get();
-            const data = doc.docs.map((doc) => doc.data());
-            const result = [];
-            const matches = data.map((match) =>
-                match.id.get().then((doc) => {
-                    const datas = doc.data();
-                    result.push(datas);
-                })
-            );
-
-            console.log(result);
-            res.json(matches);
+            const data = doc.docs.map((doc) => doc.data().id);
+            let matches = [];
+            for (let index = 0; index < data.length; index++) {
+                const temp = await data[index].get();
+                matches.push(temp.data());
+            }
+            res.send(matches);
         } catch (error) {
             res.status(500);
             res.send(error.message);
