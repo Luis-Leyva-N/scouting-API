@@ -13,18 +13,20 @@ class MainController {
             const data = doc.data();
             const matchRef = data.id;
             matchRef.update({
-                empiezaPelota: req.body.empiezaPelota,
-                mueveAutonomo: req.body.mueveAutonomo,
-                disparaAutonomo: req.body.disparaAutonomo,
-                anotaAutonomo: req.body.anotaAutonomo,
-                anotaPelotasAutonomo: req.body.anotaPelotasAutonomo,
-                humanPlayerAnota: req.body.humanPlayerAnota,
-                mueveTeleoperado: req.body.mueveTeleoperado,
-                disparaTeleoperado: req.body.disparaTeleoperado,
-                anotaTeleoperadoArriba: req.body.anotaTeleoperadoArriba,
-                anotaTeleoperadoAbajo: req.body.anotaTeleoperadoAbajo,
-                escala: req.body.escala,
-                nivelAvance: req.body.nivelAvance,
+                empiezaPelota: req.body.matchData.empiezaPelota,
+                mueveAutonomo: req.body.matchData.mueveAutonomo,
+                disparaAutonomo: req.body.matchData.disparaAutonomo,
+                anotaAutonomo: req.body.matchData.anotaAutonomo,
+                anotaPelotasAutonomo: req.body.matchData.anotaPelotasAutonomo,
+                dondeAnotaAutonomo: req.body.matchData.dondeAnotaAutonomo,
+                humanPlayerAnota: req.body.matchData.humanPlayerAnota,
+                mueveTeleoperado: req.body.matchData.mueveTeleoperado,
+                disparaTeleoperado: req.body.matchData.disparaTeleoperado,
+                anotaTeleoperadoArriba:
+                    req.body.matchData.anotaTeleoperadoArriba,
+                anotaTeleoperadoAbajo: req.body.matchData.anotaTeleoperadoAbajo,
+                escala: req.body.matchData.escala,
+                nivelAvance: req.body.matchData.nivelAvance,
                 team: req.body.teamId,
             });
             res.json({ message: "ok" });
