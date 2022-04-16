@@ -15,13 +15,13 @@ class MainController {
             matchRef.update({
                 empiezaPelota: req.body.matchData.empiezaPelota,
                 mueveAutonomo: req.body.matchData.mueveAutonomo,
-                disparaAutonomo: req.body.matchData.disparaAutonomo,
-                anotaAutonomo: req.body.matchData.anotaAutonomo,
+                cantidadAutonomo: req.body.matchData.cantidadAutonomo,
                 anotaPelotasAutonomo: req.body.matchData.anotaPelotasAutonomo,
                 dondeAnotaAutonomo: req.body.matchData.dondeAnotaAutonomo,
-                humanPlayerAnota: req.body.matchData.humanPlayerAnota,
                 mueveTeleoperado: req.body.matchData.mueveTeleoperado,
                 disparaTeleoperado: req.body.matchData.disparaTeleoperado,
+                cantidadDisparosTeleoperado:
+                    req.body.matchData.cantidadDisparosTeleoperado,
                 anotaTeleoperadoArriba:
                     req.body.matchData.anotaTeleoperadoArriba,
                 anotaTeleoperadoAbajo: req.body.matchData.anotaTeleoperadoAbajo,
