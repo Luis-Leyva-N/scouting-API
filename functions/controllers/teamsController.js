@@ -58,7 +58,7 @@ class MainController {
                 .collection("Matches");
             const doc = await docRef.get();
             const data = doc.docs.map((doc) => doc.data().id);
-            let matches = [];
+            const matches = [];
             for (let index = 0; index < data.length; index++) {
                 const temp = await data[index].get();
                 matches.push(temp.data());
